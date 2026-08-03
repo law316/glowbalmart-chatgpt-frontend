@@ -73,6 +73,7 @@ import { Route as AppWaybillRouteImport } from './routes/_app.waybill'
 import { Route as AppWhatsappAutomationRouteImport } from './routes/_app.whatsapp-automation'
 import { Route as FormSlugRouteImport } from './routes/form.$slug'
 import { Route as SystemCreateOwnerRouteImport } from './routes/system.create-owner'
+import { Route as TrackOrderCodeRouteImport } from './routes/track.$orderCode'
 import { Route as AppConnectionsAiProviderRouteImport } from './routes/_app.connections.ai-provider'
 import { Route as AppConnectionsElementorRouteImport } from './routes/_app.connections.elementor'
 import { Route as AppConnectionsEmailRouteImport } from './routes/_app.connections.email'
@@ -403,6 +404,11 @@ const SystemCreateOwnerRoute = SystemCreateOwnerRouteImport.update({
   path: '/system/create-owner',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrackOrderCodeRoute = TrackOrderCodeRouteImport.update({
+  id: '/track/$orderCode',
+  path: '/track/$orderCode',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppConnectionsAiProviderRoute =
   AppConnectionsAiProviderRouteImport.update({
     id: '/connections/ai-provider',
@@ -516,6 +522,7 @@ export interface FileRoutesByFullPath {
   '/whatsapp-automation': typeof AppWhatsappAutomationRoute
   '/form/$slug': typeof FormSlugRoute
   '/system/create-owner': typeof SystemCreateOwnerRoute
+  '/track/$orderCode': typeof TrackOrderCodeRoute
   '/connections/ai-provider': typeof AppConnectionsAiProviderRoute
   '/connections/elementor': typeof AppConnectionsElementorRoute
   '/connections/email': typeof AppConnectionsEmailRoute
@@ -590,6 +597,7 @@ export interface FileRoutesByTo {
   '/whatsapp-automation': typeof AppWhatsappAutomationRoute
   '/form/$slug': typeof FormSlugRoute
   '/system/create-owner': typeof SystemCreateOwnerRoute
+  '/track/$orderCode': typeof TrackOrderCodeRoute
   '/connections/ai-provider': typeof AppConnectionsAiProviderRoute
   '/connections/elementor': typeof AppConnectionsElementorRoute
   '/connections/email': typeof AppConnectionsEmailRoute
@@ -666,6 +674,7 @@ export interface FileRoutesById {
   '/_app/whatsapp-automation': typeof AppWhatsappAutomationRoute
   '/form/$slug': typeof FormSlugRoute
   '/system/create-owner': typeof SystemCreateOwnerRoute
+  '/track/$orderCode': typeof TrackOrderCodeRoute
   '/_app/connections/ai-provider': typeof AppConnectionsAiProviderRoute
   '/_app/connections/elementor': typeof AppConnectionsElementorRoute
   '/_app/connections/email': typeof AppConnectionsEmailRoute
@@ -742,6 +751,7 @@ export interface FileRouteTypes {
     | '/whatsapp-automation'
     | '/form/$slug'
     | '/system/create-owner'
+    | '/track/$orderCode'
     | '/connections/ai-provider'
     | '/connections/elementor'
     | '/connections/email'
@@ -816,6 +826,7 @@ export interface FileRouteTypes {
     | '/whatsapp-automation'
     | '/form/$slug'
     | '/system/create-owner'
+    | '/track/$orderCode'
     | '/connections/ai-provider'
     | '/connections/elementor'
     | '/connections/email'
@@ -891,6 +902,7 @@ export interface FileRouteTypes {
     | '/_app/whatsapp-automation'
     | '/form/$slug'
     | '/system/create-owner'
+    | '/track/$orderCode'
     | '/_app/connections/ai-provider'
     | '/_app/connections/elementor'
     | '/_app/connections/email'
@@ -908,6 +920,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   FormSlugRoute: typeof FormSlugRoute
   SystemCreateOwnerRoute: typeof SystemCreateOwnerRoute
+  TrackOrderCodeRoute: typeof TrackOrderCodeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1360,6 +1373,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SystemCreateOwnerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/track/$orderCode': {
+      id: '/track/$orderCode'
+      path: '/track/$orderCode'
+      fullPath: '/track/$orderCode'
+      preLoaderRoute: typeof TrackOrderCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_app/connections/ai-provider': {
       id: '/_app/connections/ai-provider'
       path: '/connections/ai-provider'
@@ -1586,6 +1606,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   FormSlugRoute: FormSlugRoute,
   SystemCreateOwnerRoute: SystemCreateOwnerRoute,
+  TrackOrderCodeRoute: TrackOrderCodeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
