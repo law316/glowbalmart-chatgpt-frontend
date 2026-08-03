@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+ï»¿import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/track/$orderCode")({
@@ -35,7 +35,7 @@ function money(value?: number, currency = "NGN") {
 }
 
 function clean(value?: string) {
-  if (!value) return "—";
+  if (!value) return "â€”";
   return value.replaceAll("_", " ").replaceAll("-", " ").toUpperCase();
 }
 
@@ -123,7 +123,7 @@ function TrackOrderPage() {
                 {steps.map(([title, desc, done]) => (
                   <div key={title} style={{ display: "flex", gap: 12, padding: 14, border: "1px solid #e5e7eb", borderRadius: 12, background: done ? "#f0fdf4" : "white" }}>
                     <div style={{ width: 28, height: 28, borderRadius: 999, background: done ? "#16a34a" : "#e5e7eb", color: done ? "white" : "#111", display: "grid", placeItems: "center", fontWeight: 700 }}>
-                      {done ? "?" : "•"}
+                      {done ? "?" : "â€¢"}
                     </div>
                     <div>
                       <b>{title}</b>
@@ -146,7 +146,7 @@ function TrackOrderPage() {
               <Detail label="Address" value={order.deliveryAddress} />
               <Detail label="Package" value={order.packageName} />
               <Detail label="Quantity" value={String(order.inventoryQuantity || 0)} />
-              <Detail label="Date Ordered" value={order.createdAt ? new Date(order.createdAt).toLocaleString() : "—"} />
+              <Detail label="Date Ordered" value={order.createdAt ? new Date(order.createdAt).toLocaleString() : "â€”"} />
 
               <button onClick={loadOrder} style={{ marginTop: 20, padding: "12px 18px", border: 0, borderRadius: 10, background: "#111827", color: "white", fontWeight: 700 }}>
                 Refresh status
@@ -172,7 +172,8 @@ function Detail({ label, value }: { label: string; value?: string }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "150px 1fr", gap: 12, padding: "10px 0", borderBottom: "1px solid #f3f4f6" }}>
       <b style={{ color: "#6b7280" }}>{label}</b>
-      <span>{value || "—"}</span>
+      <span>{value || "â€”"}</span>
     </div>
   );
 }
+
